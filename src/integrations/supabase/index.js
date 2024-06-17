@@ -203,7 +203,7 @@ export const useUpdateVenue = () => {
 export const useDeleteVenue = () => {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: (id) => fromSupabase.from('venues').delete().eq('id', id)),
+        mutationFn: (id) => fromSupabase(supabase.from('venues').delete().eq('id', id)),
         onSuccess: () => {
             queryClient.invalidateQueries('venues');
         },
